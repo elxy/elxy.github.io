@@ -1,0 +1,12 @@
+# Site settings
+title: elxy的博客
+email: elxy@outlook.com
+description: > # this means to ignore newlines until "baseurl:"
+  啦啦啦啦啦~
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "https://elxy.github.io"
+github_username: elxy
+
+# Build settings
+markdown: kramdown
+
