@@ -2,8 +2,6 @@
 layout: default
 ---
 
-<link rel="stylesheet" href="{{ "/js/google-code-prettify/prettify.css" | prepend: site.baseurl }}">
-
 <div class="post">
 
   <header class="post-header">
@@ -11,20 +9,12 @@ layout: default
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
   </header>
 
-  <article class="typo">
+  <article class="post-content">
     {{ content }}
   </article>
 
 </div>
 
-<script src="{{ "/js/jquery-3.2.1.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/google-code-prettify/prettify.js" | prepend: site.baseurl }}"></script>
-<script type="text/javascript">
-  $(function(){
-    $("pre").addClass("prettyprint linenums");
-    prettyPrint();
-  });
-</script>
-
+<script src="{{ "/assets/js/jquery-3.2.1.min.js" | prepend: site.baseurl }}"></script>
 {% include disqus.html %}
 

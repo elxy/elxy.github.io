@@ -17,10 +17,13 @@ body {
     font-family: $base-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
-    font-weight: 300;
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
+    width: 90%;
+    max-width: 960px;
+    margin: 3em auto 0;
+    border: 1px solid #ddd;
 }
 
 
@@ -80,7 +83,7 @@ li {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
+    font-weight: 400;
 }
 
 
@@ -90,15 +93,14 @@ h1, h2, h3, h4, h5, h6 {
  */
 a {
     color: $brand-color;
-    text-decoration: none;
+    text-decoration: underline;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: lighten($brand-color, 50%);
     }
 
     &:hover {
-        color: $text-color;
-        text-decoration: underline;
+        color: lighten($brand-color, 40%);
     }
 }
 

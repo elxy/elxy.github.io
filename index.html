@@ -3,18 +3,23 @@ layout: default
 ---
 
 <div class="home">
-
-  <h1 class="page-heading">最新文章</h1>
-
+ post-comments-count 
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} by {{ post.author }}</span>
-        <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}#disqus_thread">0 Comments</a>
-
+        <h2 class="post-date-header">{{ post.date | date: "%b %-d, %Y" }}</h2>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
+        {% if post.excerpt %}
+          <p class="post-content" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 360 }}</p>
+        {% endif %}
+        <p class="post-footer">
+          <span class="post-footers">{{ post.author }} 提交于 {{ post.date | date: "%R" }}</span>
+          <span class="separator">|</span>
+          <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}#disqus_thread">留言 (0)</a>
+
+        </p>
       </li>
     {% endfor %}
   </ul>
