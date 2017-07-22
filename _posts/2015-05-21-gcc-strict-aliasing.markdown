@@ -1,10 +1,8 @@
 ---
-layout: post
 title:  "GCC 优化选项之 strict aliasing"
 date:   2015-05-21 20:14:11 +0800
 author: elxy
 categories: C
-comments: true
 ---
 
 GCC 优化方式中有一个 `-fstrict-aliasing` 选项。什么是 `strict aliasing` 呢？简单解释就是：“不同类型”的指针，一定不会引用同一个内存区域。c11 标准 6.5 节对别名的具体说明如下：
@@ -45,7 +43,7 @@ int main()
 
 编译并运行：
 
-{% highlight shell-session %}
+{% highlight shell_session %}
 $ gcc test.c && ./a.out 
 1077936128
 1077936128

@@ -6,7 +6,10 @@
   <body>
 
     {% include header.html %}
-    <script id="dsq-count-scr" src="//elxy.disqus.com/count.js" async></script>
+
+    {% if jekyll.environment == "production" %}
+      <script id="dsq-count-scr" src="//elxy.disqus.com/count.js" async></script>
+    {% endif %}
 
     <div class="page-content">
       <div class="wrapper">

@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "C 语言中的 inline 函数"
 date:   2015-05-06 18:02:04 +0800
 author: elxy
