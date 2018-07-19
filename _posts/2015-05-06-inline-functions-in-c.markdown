@@ -38,14 +38,14 @@ inline 使用注意事项
 
 `inline`只是作为对编译器优化的提示，当使用`-O0`选项禁止优化时，`inline`函数只会被当作普通函数对待，不会被展开。除非定义了`always_inline`属性。
 
-{% highlight C %}
+```c
 /* 仅适用于 GCC 编译器 */
 inline void foo (const char) __attribute__((always_inline));
-{% endhighlight %}
+```
 
 当一个函数标注了`inline`表示其定义只能被用作内联（展开），并且还会有一个非内联函数定义在程序的其他地方。当使用`-O0`选项编译下面的代码时，编译器在链接时会提示第 10 行找不到`add`。即便使用了 `-O`优化选项，编译器仍会提示找不到`add`，此时虽然第 10 行会被展开，但第 11 行使用的函数的地址，`add`会被当作外部引用，仍然会报错。
 
-{% highlight C %}
+```c
 /* C99 中缺少非内联定义时，链接出错 */
 inline int add(int i, int j)
 {
@@ -54,12 +54,12 @@ inline int add(int i, int j)
 
 int main(void)
 {
-...
+    /* ... */
     a = add(1, 2);
     printf("add points %p\n", add);
-...
+    /* ... */
 }
-{% endhighlight %}
+```
 
 对上述错误，可以改用`static inline`修复。需要注意的是，如果编译器需要生成非内联版本，可能会浪费一些空间；在两个编译单元中比较函数地址时，结果不会是相等。
 

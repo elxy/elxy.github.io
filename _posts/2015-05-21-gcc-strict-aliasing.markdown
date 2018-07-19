@@ -23,7 +23,7 @@ GCC 优化方式中有一个 `-fstrict-aliasing` 选项。什么是 `strict alia
 
 在 `strict aliasing` 规则下，编译器可以进行相应的优化。看下面的例子：
 
-{% highlight C %}
+```c
 int n;
 
 int foo(float *ptr)
@@ -39,11 +39,11 @@ int main()
       printf("%d\n", n); 
       return 0;
 }
-{% endhighlight %}
+```
 
 编译并运行：
 
-{% highlight shell_session %}
+```console
 $ gcc test.c && ./a.out 
 1077936128
 1077936128
@@ -53,11 +53,11 @@ $ gcc -O2 test.c && ./a.out
 $ gcc -O2 -fno-strict-aliasing test.c && ./a.out 
 1077936128
 1077936128
-{% endhighlight %}
+```
 
 在加上 `-O2` 选项后（`strict-aliasing` 优化在 `O2` 以上才开启[^gcc_optimize_options]），第一次输出竟然是 `1`，难道 `*ptr = 3` 没有执行？其实是执行了的，不信看看汇编代码（`google-code-prettify` 不支持 ASM 高亮，凑合看吧）：
 
-{% highlight nasm %}
+```nasm
 ; gcc -S -O2 test.c
         .file   "strict_aliasing.c"
         .text
@@ -105,13 +105,13 @@ main:
         .comm   n,4,4 ; 存储符号链接，分别是符号名称，长度，和对齐参数
         .ident  "GCC: (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064]"
         .section        .note.GNU-stack,"",@progbits
-{% endhighlight %}
+```
 
 比较这两个文件的第 `12` 行，会发现启用了 `strict aliasing` 优化的汇编代码（含 `-O2`，不含 `-fno-strict-aliasing`），认为 `ptr` 不会是 `n` 的别名，故而函数 `foo()` 会直接返回 `1`。而禁用了 `strict aliasing` 优化的汇编代码，函数 `foo()` 多了一次访存：`movl n(%rip), %eax`。
 
 由于 `-O2` 会将小函数内联[^gcc_optimize_options]，第 `29` 行赋值给 printf 的参数用的就是直接数，而没用变量来存了。
 
-{% highlight nasm %}
+```nasm
 ; gcc -S -O2 -fno-strict-aliasing test.c
         .file   "strict_aliasing.c"
         .text
@@ -159,7 +159,7 @@ main:
         .comm   n,4,4
         .ident  "GCC: (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064]"
         .section        .note.GNU-stack,"",@progbits
-{% endhighlight %}
+```
 
 由于 `-O2` 默认包含 `-fstrict-aliasing` 优化，如果不能确保自己的指针使用能像 c11 标准 6.5 节中规定得那样严格，建议加上 `-fno-strict-aliasing` 选项。
 

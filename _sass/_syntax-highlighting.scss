@@ -2,22 +2,25 @@
  * Syntax highlighting styles
  */
 .highlight {
-    background: #ffffff;
+    background: #f5f6f7;
     @extend %vertical-rhythm;
 
     .hll { background-color: #ffffcc }
     .c { color: #008000 } /* Comment */
     .err { border: 1px solid #FF0000 } /* Error */
     .k { color: #0000ff } /* Keyword */
+    .o { color: #0000ff } /* Operator */
     .cm { color: #008000 } /* Comment.Multiline */
     .cp { color: #0000ff } /* Comment.Preproc */
     .c1 { color: #008000 } /* Comment.Single */
     .cs { color: #008000 } /* Comment.Special */
+    .gd { text-decoration: line-through } /* Generic.Deleted */
     .ge { font-style: italic } /* Generic.Emph */
     .gh { font-weight: bold } /* Generic.Heading */
-    .gp { font-weight: bold } /* Generic.Prompt */
+    // .gp { font-weight: bold } [> Generic.Prompt <]
     .gs { font-weight: bold } /* Generic.Strong */
     .gu { font-weight: bold } /* Generic.Subheading */
+    .go { color: #008000 } /* Generic.Output */
     .kc { color: #0000ff } /* Keyword.Constant */
     .kd { color: #0000ff } /* Keyword.Declaration */
     .kn { color: #0000ff } /* Keyword.Namespace */
@@ -38,5 +41,4 @@
     .sr { color: #a31515 } /* Literal.String.Regex */
     .s1 { color: #a31515 } /* Literal.String.Single */
     .ss { color: #a31515 } /* Literal.String.Symbol */
-
 }
