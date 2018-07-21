@@ -93,14 +93,14 @@ h1, h2, h3, h4, h5, h6 {
  */
 a {
     color: $brand-color;
-    text-decoration: underline;
 
     &:visited {
-        color: lighten($brand-color, 50%);
+        color: lighten($brand-color, 40%);
     }
 
     &:hover {
-        color: lighten($brand-color, 40%);
+        // color: lighten($brand-color, 30%);
+        text-decoration: underline;
     }
 }
 
@@ -114,7 +114,7 @@ blockquote {
     border-left: 4px solid $grey-color-light;
     padding-left: $spacing-unit / 2;
     font-size: 1em;
-    letter-spacing: -1px;
+    /* letter-spacing: -1px; */
     /* font-style: italic; */
 
     > :last-child {
@@ -129,10 +129,10 @@ blockquote {
  */
 pre,
 code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier;
     font-size: 15px;
-    border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #f5f6f7;
+    background-color: rgba(27,31,35,0.05);
 }
 
 code {
@@ -147,6 +147,7 @@ pre {
         border: 0;
         padding-right: 0;
         padding-left: 0;
+        background: none;
     }
 }
 

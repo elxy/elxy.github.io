@@ -17,10 +17,11 @@ $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
-$text-color:       #111;
+$blue-color:       #0366d6;
+
+$text-color:       #24292e;
 $background-color: #fdfdfd;
-$brand-color:      $grey-color-dark;
-// $brand-color:      #2a7ae2;
+$brand-color:      $blue-color;
 
 // Width of the content area
 $content-width:    800px;
