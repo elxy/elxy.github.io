@@ -7,7 +7,6 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <h2 class="post-date-header">{{ post.date | date: "%b %-d, %Y" }}</h2>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
@@ -15,7 +14,7 @@ layout: default
           <p class="post-content" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 360 }}</p>
         {% endif %}
         <p class="post-footer">
-          <span class="post-footers">{{ post.author }} 提交于 {{ post.date | date: "%R" }}</span>
+          <span class="post-footers">发布于 {{ post.date | date: "%Y-%m-%d" }}</span>
           <span class="separator">|</span>
           <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}#disqus_thread">留言 (0)</a>
 
